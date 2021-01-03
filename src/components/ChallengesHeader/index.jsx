@@ -20,6 +20,7 @@ const ChallengesHeader = ({ title, onChangeFilter }) => {
             <select styleName="dropdown-select" onChange={onChangeFilter}>
               <option value=""> All </option>
               <option value="Submitter"> Submitter </option>
+              <option value="Reviewer"> Reviewer </option>
               <option value="Copilot"> Co-Pilot </option>
             </select>
             <DownArrow styleName="down-arrow" />

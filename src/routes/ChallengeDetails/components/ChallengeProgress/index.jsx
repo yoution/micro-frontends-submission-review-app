@@ -4,12 +4,17 @@
  * Shows Progress the challenge.
  */
 import React from "react";
+import config from "../../../../../config";
 import ProgressBar from "../../../../components/ProgressBar";
 import PT from "prop-types";
 import "./styles.module.scss";
 
-const ChallengeProgress = ({ progress, purse, registers, submitters }) => {
+export const getTCChallengeURL = (challengeId) => `${config.TOPCODER_COMMUNITY_WEBSITE_URL}/challenges/${challengeId}`
+
+const ChallengeProgress = ({ challengeId, progress, purse, registers, submitters }) => {
   const purseBackgroundColors = ["#fce217", "#d1d0cf", "#da8f64"];
+
+  const challengeURL = getTCChallengeURL(challengeId)
 
   return (
     <div styleName="challenge-progress-container">
@@ -23,7 +28,7 @@ const ChallengeProgress = ({ progress, purse, registers, submitters }) => {
                 style={{ borderColor: purseBackgroundColors[index] }}
               >
                 <span styleName="purse-rank">{rank.position}</span>
-                <span styleName="purse-money">{rank.money}</span>
+                <span styleName="purse-money">{rank.money.toLocaleString()}</span>
               </div>
             ))}
         </div>
@@ -35,7 +40,7 @@ const ChallengeProgress = ({ progress, purse, registers, submitters }) => {
       <div styleName="progress-view-wrapper">
         <ProgressBar progress={progress} />
         <div styleName="view-challenge-wrapper">
-          <button styleName="view-challenge">VIEW CHALLENGE</button>
+          <a href={challengeURL} styleName="view-challenge">VIEW CHALLENGE</a>
         </div>
       </div>
     </div>
@@ -46,6 +51,7 @@ ChallengeProgress.propTypes = {
   progress: PT.object,
   purse: PT.array,
   registers: PT.number,
+  challengeId: PT.number,
   submitters: PT.number,
 };
 

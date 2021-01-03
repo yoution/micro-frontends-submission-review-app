@@ -13,4 +13,8 @@ module.exports = {
    * Email to report issues to
    */
   EMAIL_REPORT_ISSUE: "support+team-issue@topcoder-dev.com",
+
+  API: {
+    V5: "https://api.topcoder-dev.com/v5",
+  },
 };
